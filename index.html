@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <title>demo wedding invitation-01</title>
+  
+  <style>
+    
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', cursive;
+}
+
+body {
+  background: #fff8f5;
+  color: #333;
+}
+
+.main-container {
+  max-width: 100%;
+  margin: auto;
+}
+
+.main-container h2 {
+  color: #b76e79;
+  font-size: 8.5vw;
+  padding-bottom: 55px;
+  font-family: Arial, sans-serif
+}
+
+.section-1 p {
+  font-size: 2vw;
+}
+
+/* ALL SECTIONS */
+div[class^="section"] {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* SECTION 1 */
+.section-1 {
+  background: linear-gradient(to bottom, #ffe4e1, #fff);
+}
+
+.section-1 img {
+  width: 70px;
+  max-height: 70px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.section-1 h4 {
+  font-size: 7.2vw;
+}
+
+.b-name {
+  text-align: left;
+  margin-left: 8%;
+}
+
+.g-name {
+  text-align: right;
+  margin-right: 8%;
+}
+
+.b-name, .g-name {
+  font-size: 17.3vw;
+  color: #b76e79;
+  font-family: 'allura', cursive;
+}
+
+/* COUNTDOWN */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.box {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 18.6vw;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.number {
+  font-size: 5.5vw;
+  font-weight: bold;
+  color: #b76e79;
+}
+
+/* FUNCTIONS */
+.section-3 h3 {
+  font-size: 30px;
+  padding: 15px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.cards {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.cards img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* GALLERY */
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-snap-type: x mandatory;
+  padding: 20px;
+}
+
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery img {
+  flex: 0 0 70%;
+  max-width: 280px;
+  border-radius: 15px;
+  scroll-snap-align: center;
+  transition: 0.4s;
+  transform: scale(0.8);
+}
+
+.gallery img.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* VIDEO */
+.section-5 video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* FORM */
+.blessing-container {
+  color: #b76e79;
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+  background: #ffffff;
+  padding: 25px 15px;
+  border-radius: 20px;
+  box-shadow: 0 18px 30px rgba(0,0,0,0.08);
+}
+
+.blessing-container input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px;
+  border-radius: 8px;
+  border: 1px solid #b76e79;
+}
+
+.blessing-container button {
+  width: 100%;
+  padding: 10px;
+  background: #b76e79;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* SPECIAL SECTION */
+.section-9 {
+  background: #f2cdd1;
+  font-style: italic;
+  width: 100%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  #b-name, #g-name {
+    font-size: 30px;
+  }
+
+  .box {
+    min-width: 60px;
+    padding: 10px;
+  }
+}
+
+.section-divider {
+    width: 100%;
+    height: 2px;
+    margin: 40px 0;
+    background: linear-gradient(to right, transparent, #f2cdd1, transparent);
+}
+
+/* LIVE GUEST BOOK */
+.blessings-wall {
+  max-width: 100%;
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.blessing-card {
+  background: linear-gradient(135deg, #fff 0%, #ffe4e1 100%);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(183, 110, 121, 0.15);
+  border: 2px solid #f2cdd1;
+  position: relative;
+  animation: slideIn 0.6s ease-out;
+  transition: all 0.3s ease;
+}
+
+.blessing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(183, 110, 121, 0.25);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blessing-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed #f2cdd1;
+}
+
+.blessing-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b76e79, #f2cdd1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.blessing-info h4 {
+  color: #b76e79;
+  font-size: 18px;
+  margin: 0;
+}
+
+.blessing-info p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.blessing-message {
+  color: #444;
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+}
+
+.time-stamp {
+  font-size: 12px;
+  color: #b76e79;
+  margin-top: 15px;
+  opacity: 0.8;
+}
+
+/* Scrollbar styling */
+.blessings-wall::-webkit-scrollbar {
+  width: 8px;
+}
+.blessings-wall::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.blessings-wall::-webkit-scrollbar-thumb {
+  background: #b76e79;
+  border-radius: 10px;
+}
+
+.popup {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #b76e79;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  opacity: 0;
+  transition: 0.4s ease;
+  z-index: 999;
+}
+
+.popup.show {
+  opacity: 1;
+  bottom: 50px;
+}
+
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  color: #fdebed;
+  font-size: 14px;
+  animation: floatUp linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+  </style>
+  
+</head>
+<body>
+  <div class="main-container">
+    
+    <div class="section-1">
+      <img src="images/pic1.jpg">
+      <p>|| श्री गणेशाय नमः ||</p>
+      <br><br><br><br>
+      <h1 class="b-name"> Ambika </h1>
+      <h4>weds</h4>
+      <h1 class="g-name"> Vaibhav </h1>
+      <br><br><br>
+      <h3>“With love, we invite you to celebrate our beginning.”</h3>
+    </div>
+    
+    <div class="section-2">
+      <h2>The big day is almost here...</h2>
+      <div class="countdown">
+        <div class="box">
+          <div id="days" class="number">00</div>
+          <div class="label">Days</div>
+        </div>
+        <div class="box">
+          <div id="hours" class="number">00</div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="box">
+          <div id="minutes" class="number">00</div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="box">
+          <div id="seconds" class="number">00</div>
+          <div class="label">Seconds</div>
+        </div>
+      </div><br>
+      <h3>Mark your calendars :- 30 dec 2026</h3>
+    </div>
+    
+    <div class="section-3">
+      <h2>Celebrate With Us</h2>
+      <div class="container">
+          <div class="cards">
+            <h3>HALDI</h3>
+            <img src="images/pic2.jpg">
+            <p>DATE : dd/mm/yyyy<br>DAY : Monday<br>TIME : 12:00 onwards<br>VENUE : Sanskar marriage garden, Bhopal</p>
+          </div>
+        
+          <div class="cards">
+            <h3>MEHENDI</h3>
+            <img src="images/pic3.jpg">
+            <p>DATE : dd/mm/yyyy<br>DAY : Monday<br>TIME : 12:00 onwards<br>VENUE : Sanskar marriage garden, Bhopal</p>
+          </div>
+        
+          <div class="cards">
+            <h3>SANGEET</h3>
+            <img src="images/pic4.jpg">
+            <p>DATE : dd/mm/yyyy<br>DAY : Monday<br>TIME : 12:00 onwards<br>VENUE : Sanskar marriage garden, Bhopal</p>
+          </div>
+      </div>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div class="section-4">
+      <h2>GALLERY</h2>
+      <p>Little Moments, Big Memories <br>
+A glimpse of our story</p>
+      <div class="gallery">
+        <img src="images/pic5.jpg" class="slide active">
+        <img src="images/pic6.jpg" class="slide">
+        <img src="images/pic7.jpg" class="slide">
+        <img src="images/pic8.jpg" class="slide">
+        <img src="images/pic9.jpg" class="slide">
+      </div>
+      <p>Our Story in Frames<br>
+— love, laughter, forever —</p>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div class="section-5">
+      <h2>HIGHLIGHTS</h2>
+      <p>A collection of moments we never want to forget  
+filled with laughter, love, and a little bit of magic </p><br><br>
+      <video src="images/video1.mp4" controls autoplay muted loop></video><br><br>
+      <p>Started with a vibe  
+Now it’s a forever thing...</p>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div class="section-6">
+      <h2> Blessings Wall</h2>
+      <p>Messages from the heart</p>
+      <div id="blessingsWall" class="blessings-wall">
+    <!-- Blessings will appear here -->
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="section-7">
+      <h2> Send Your Blessings</h2>
+      <div class="blessing-container">
+        <p>Your Name</p>
+        <input id="guestName" placeholder="Your lovely name" type="text">
+        <p>Relation</p>
+        <input id="guestRelation" placeholder="eg. dost, Bhai, Bua ji, etc" type="text">
+        <p>Your Blessings</p>
+        <textarea id="blessingText" placeholder="Write your heartfelt blessings or wishes here!" rows="6"></textarea>
+        <button id="sendBtn">Send Blessings </button>
+        <p id="statusMsg" style="font-size: 14px; margin-top: 10px; display: none;"></p>
+      </div>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div class="section-8">
+      <h2>VENUE Details</h2>
+      <p><b><u>VENUE</u> :</b> Rasdham Marriage garden, near petrol pump, ayodhya bypass road, Bhanpura, Bhopal, Madhya Pradesh</p><br>
+      <iframe 
+  src="https://www.google.com/maps?q=Rasdham+Marriage+Garden+Bhopal&output=embed"
+  width="100%" 
+  height="250" 
+  style="border: 0; border-radius:15px;">
+      </iframe>
+    </div>
+    
+    <div class="section-9">
+      <h2>Special Request...</h2>
+      <p>“Aapki upasthiti hi hamare liye sabse bada uphaar hai.”<br><br>
+      See you at the wedding<br>
+With love, Ambika & Vaibhav...</p>
+    </div>
+    
+  </div>
+  <div id="popup" class="popup">
+  Thank you for your lovely wishes 💖
+  </div>
+  <div class="hearts"></div>
+  
+  <script type="module">
+  // Import Firebase
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+  import { getFirestore, collection, addDoc, onSnapshot, orderBy, limit, query } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyCTUZ5JDDfB8D193j3jpy1ulTFhptpw9xQ",
+    authDomain: "wedding-invitation-18692.firebaseapp.com",
+    projectId: "wedding-invitation-18692",
+    storageBucket: "wedding-invitation-18692.firebasestorage.app",
+    messagingSenderId: "178008824825",
+    appId: "1:178008824825:web:b8c186a2dd916dfb7ebb28",
+    measurementId: "G-GXYV7G2GCC"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // 1. COUNTDOWN TIMER
+  const weddingDate = new Date("Dec 30, 2026 00:00:00").getTime();
+  setInterval(function() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+    document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+    document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+  }, 1000);
+
+  // 2. GALLERY
+  const gallery = document.querySelector(".gallery");
+  const images = document.querySelectorAll(".gallery img");
+  
+  function updateActiveImage() {
+    let center = gallery.scrollLeft + gallery.offsetWidth / 2;
+    images.forEach(img => {
+      const box = img.offsetLeft + img.offsetWidth / 2;
+      if (Math.abs(center - box) < img.offsetWidth / 1.5) {
+        img.classList.add("active");
+      } else {
+        img.classList.remove("active");
+      }
+    });
+  }
+  gallery.addEventListener("scroll", updateActiveImage);
+  updateActiveImage();
+
+  // 3. FIREBASE BLESSINGS ✅
+  let unsubscribe = null;
+
+  function renderBlessings(blessings) {
+    const wall = document.getElementById('blessingsWall');
+    wall.innerHTML = '';
+    blessings.slice(0, 8).forEach(blessing => {
+      const card = document.createElement('div');
+      card.className = 'blessing-card';
+      card.innerHTML = `
+        <div class="blessing-header">
+          <div class="blessing-avatar">${blessing.name.charAt(0).toUpperCase()}</div>
+          <div class="blessing-info">
+            <h4>${blessing.name}</h4>
+            <p>${blessing.relation}</p>
+          </div>
+        </div>
+        <p class="blessing-message">${blessing.message}</p>
+        <div class="time-stamp">${blessing.time}</div>
+      `;
+      wall.appendChild(card);
+    });
+    wall.scrollTop = wall.scrollHeight;
+  }
+
+  function startListening() {
+    const q = query(collection(db, "blessings"), orderBy("timestamp", "desc"), limit(50));
+    unsubscribe = onSnapshot(q, (snapshot) => {
+      const blessings = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      renderBlessings(blessings);
+    });
+  }
+
+  async function addBlessing(name, relation, message) {
+    try {
+      const time = new Date().toLocaleString('en-IN', {
+        day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      });
+      await addDoc(collection(db, "blessings"), {
+        name: name.trim(),
+        relation: relation.trim() || 'Guest',
+        message: message.trim(),
+        time: time,
+        timestamp: new Date()
+      });
+      showStatus('✨ Blessing added successfully!', '#b76e79');
+    } catch (error) {
+      console.error("Error:", error);
+      showStatus('❌ Something went wrong. Try again!', '#ff6b6b');
+    }
+  }
+
+  function showStatus(message, color) {
+    const statusMsg = document.getElementById('statusMsg');
+    statusMsg.textContent = message;
+    statusMsg.style.color = color;
+    statusMsg.style.display = 'block';
+    setTimeout(() => statusMsg.style.display = 'none', 3000);
+  }
+
+  // 4. MANDATORY VALIDATION ✅
+  document.getElementById('sendBtn').addEventListener('click', async function() {
+    const name = document.getElementById('guestName').value.trim();
+    const relation = document.getElementById('guestRelation').value.trim();
+    const message = document.getElementById('blessingText').value.trim();
+
+    if (!name || !relation || !message || message.length < 10) {
+      showStatus('❌ Fill ALL: Name, Relation & Blessings (10+ chars)', '#ff6b6b');
+      return;
+    }
+
+    await addBlessing(name, relation, message);
+    
+    showPopup();
+    
+    document.getElementById('guestName').value = '';
+    document.getElementById('guestRelation').value = '';
+    document.getElementById('blessingText').value = '';
+  });
+
+  // Enter key
+  document.getElementById('blessingText').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      document.getElementById('sendBtn').click();
+    }
+  });
+
+  // Start
+  startListening();
+  window.addEventListener('beforeunload', () => { if (unsubscribe) unsubscribe(); });
+  
+
+const popup = document.getElementById("popup");
+
+function showPopup() {
+  popup.classList.add("show");
+
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 3000);
+}
+
+const heartsContainer = document.querySelector(".hearts");
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💗";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+  heart.style.fontSize = (10 + Math.random() * 10) + "px";
+
+  heartsContainer.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 8000);
+}
+
+setInterval(createHeart, 2500);
+  
+</script>
+
+</body>
+</html>
